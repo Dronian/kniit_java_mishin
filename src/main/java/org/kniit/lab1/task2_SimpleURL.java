@@ -1,6 +1,6 @@
-public class SimpleURL {    // Создали класс SimpleURL
+package Java_Projects;
 
-    // Создали поля класса SimpleURL, которые будут отвечать за части URL
+public class SimpleURL {
     private String protocol;
     private String address;
     private String domainZone;
@@ -8,7 +8,25 @@ public class SimpleURL {    // Создали класс SimpleURL
     private String webpageName;
     private String webPageExtension;
 
-    // Ввели геттеры для полей класса
+    public SimpleURL(String url) {
+        int protocolDelimiterIndex = url.indexOf("://");
+        String[] urlPath = url.substring(protocolDelimiterIndex + 3).split("/");
+
+        String urlAddress = urlPath[0];
+        String urlDomainZone = urlAddress.substring(urlAddress.indexOf(".") + 1);
+
+        String urlAfterSiteName = urlPath[3];
+        String urlWebpageName = urlAfterSiteName.substring(0, urlAfterSiteName.indexOf("?"));
+        String urlWebpageExtension = urlWebpageName.substring(urlWebpageName.indexOf(".") + 1);
+
+        this.protocol = url.substring(0, protocolDelimiterIndex);
+        this.address = urlAddress;
+        this.domainZone = urlDomainZone;
+        this.siteName = urlPath[1];
+        this.webpageName = urlWebpageName;
+        this.webPageExtension = urlWebpageExtension;
+    }
+
     public String getProtocol() {
         return protocol;
     }
@@ -32,8 +50,7 @@ public class SimpleURL {    // Создали класс SimpleURL
     public String getWebPageExtension() {
         return webPageExtension;
     }
-  
-    // Переопределили метод toString() через аннотацию Override. Переопределение происходит таким образом для наиболее удобного вывода частей URL после парсинга 
+
     @Override
     public String toString() {
         return String.format(
