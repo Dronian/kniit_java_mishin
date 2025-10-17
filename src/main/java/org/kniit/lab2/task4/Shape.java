@@ -2,11 +2,6 @@ import java.lang.Math;
 
 public abstract class Shape {
     public abstract double getVolume();
-
-    @Override
-    public String toString() {
-        return "Фигура";
-    }
 }
 
 class Sphere extends Shape {
@@ -18,12 +13,12 @@ class Sphere extends Shape {
 
     @Override
     public double getVolume() {
-        return (4.0 / 3) * Math.PI * Math.pow(sphereRadius, 3);
+        return (4.0 / 3.0) * Math.PI * Math.pow(sphereRadius, 3);
     }
 
     @Override
     public String toString() {
-        return String.format("Сфера [радиус=%.2f]", sphereRadius);
+        return String.format("Сфера (радиус = %.4f, объем = %.4f)", sphereRadius, getVolume());
     }
 }
 
@@ -36,12 +31,12 @@ class Cube extends Shape {
 
     @Override
     public double getVolume() {
-        return Math.pow(cubeDimension, 3);
+        return cubeDimension * cubeDimension * cubeDimension;
     }
 
     @Override
     public String toString() {
-        return String.format("Куб [сторона=%.2f]", cubeDimension);
+        return String.format("Куб (сторона = %.4f, объем = %.4f)", cubeDimension, getVolume());
     }
 }
 
@@ -61,6 +56,6 @@ class Cylinder extends Shape {
 
     @Override
     public String toString() {
-        return String.format("Цилиндр [радиус=%.2f, сторона=%.2f]", foundationRadius, height);
+        return String.format("Цилиндр (радиус = %.4f, сторона = %.4f, объем = %.4f)", foundationRadius, height, getVolume());
     }
 }
