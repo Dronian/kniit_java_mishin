@@ -1,14 +1,12 @@
 public class Container {
-    private double initialVolume;
     private double remainingVolume;
 
     public Container(double volume) {
-        this.initialVolume = volume;
         this.remainingVolume = volume;
     }
 
-    public double getRemainingVolume() {
-        return remainingVolume;
+    public String getRemainingVolume() {
+        return String.format("Оставшийся объем: %.4f", remainingVolume);
     }
 
     public String add(Shape shape) {
